@@ -25,8 +25,8 @@ $icon-font-path: '../fonts/';
 /* Navbar transparent */
 $navbar-default-bg:     $color-main;
 $navbar-default-border: $color-main;
-$navbar-inverse-bg:     $color-main;
-$navbar-inverse-border: $color-main;
+$navbar-inverse-bg:     rgba(0, 0, 0, 0);
+$navbar-inverse-border: rgba(0, 0, 0, 0);
 
 /* Thumbnail */
 $thumbnail-padding:           0;
@@ -34,7 +34,57 @@ $thumbnail-padding:           0;
 $thumbnail-border-radius:     0;
 
 // bower:scss
-@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// Core variables and mixins
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+
+// Reset and dependencies
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/normalize";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/print";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
+
+// Core CSS
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/type";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/code";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/grid";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/tables";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/forms";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+
+// Components
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/dropdowns";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navs";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navbar";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/pagination";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/pager";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/labels";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/badges";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/jumbotron";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/thumbnails";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/alerts";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/progress-bars";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/media";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/list-group";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/panels";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/wells";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/close";
+
+// Components w/ JavaScript
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/modals";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/tooltip";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/popovers";
+// @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/carousel";
+
+// Utility classes
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+
 // endbower
 
 .navbar-brand {
@@ -63,6 +113,10 @@ $thumbnail-border-radius:     0;
   transition: height .3s ease-out;
 }
 
+.thumbnail {
+  position: relative;
+}
+
 /*
  * end Bootstrap
  *
@@ -83,8 +137,15 @@ $thumbnail-border-radius:     0;
   color: #fff;
 }
 
+.text-2x {
+  font-size: 2em;
+}
+
 .block-intro {
   background-color: $color-main;
+  background-image: url(../images/decoration/bg.jpg);
+  background-position: center;
+  background-size: cover;
   color: #fff;
 }
 
@@ -95,16 +156,23 @@ $thumbnail-border-radius:     0;
 }
 
 .header-title {
-  text-align: center;
+  text-align: right;
   font-weight: 100;
   font-size: 3em;
-  padding-bottom: 1.5em;
-  padding-top: 1.5em;
+  padding-top: .5em;
+  padding-bottom: .7em;
+  line-height: .8em;
 
-  @media (min-width: $screen-md-min) {
-    font-size: 6em;
-    padding-bottom: 2em;
-    padding-top: 2em;    
+  @media (min-width: $screen-sm-min) {
+    font-size: 4em;
+    padding-top: 1em;    
+    padding-bottom: 1em;
+  }
+
+  @media (min-width: $screen-lg-min) {
+    font-size: 5em;
+    padding-top: .5em;    
+    padding-bottom: .7em;
   }
 }
 
@@ -131,7 +199,7 @@ $thumbnail-border-radius:     0;
     position: absolute;
     width: 0;
     height: 0;
-    border-color: $color-main;
+    border-color: rgba(0, 0, 0, 0);
     border-style: solid;
     top: 50%;
     right: -5px;
@@ -259,6 +327,11 @@ $thumbnail-border-radius:     0;
 
   .about-gallery__figure {
     margin-bottom: 4px;
+    overflow-y: hidden;
+
+    // &:hover .about-gallery__caption_bottom {
+      // transform: translateY(100%);
+    // }
   }
 
   .about-gallery__link {
@@ -279,13 +352,38 @@ $thumbnail-border-radius:     0;
   .about-gallery__date {
     float: right;
     padding: 4px;
-    background-color: #eee;
+    background-color: #444;
     margin-left: 8px;
     margin-bottom: 8px;
     text-align: right;
   }
-}
 
+  // .about-gallery__caption_bottom {
+  //   // position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //   // background-color: #333;
+  //   color: #fff;
+  //   transition: transform .3s cubic-bezier(0, 0.7, 1, 1);
+  //   overflow-x: hidden;
+  // }
+
+  .about-gallery__caption_all-photos {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-size: 2em;
+    font-weight: 400;
+    text-transform: lowercase;
+    text-align: justify;
+    display: flex;
+    align-items: center;
+  }
+}
 
 
 .footer {
@@ -340,8 +438,8 @@ border-left: 1px solid #f2f2f2;
 }
 
 .navbar-inverse .divider-vertical {
-border-right-color: darken($navbar-inverse-bg, 0%);
-border-left-color: darken($navbar-inverse-bg, 0%);
+border-right-color: darken($color-main, 0%);
+border-left-color: darken($color-main, 0%);
 }
 
 @media (max-width: 767px) {
@@ -358,28 +456,11 @@ border-left-color: darken($navbar-inverse-bg, 0%);
 }
 
 .intro:first-letter {
-  font-size: 5.5em;
+  font-size: 5.2em;
   padding: .1em .05em 0 0;
   margin: 0;
   float: left;
   line-height: .65;
   font-weight: 400;
   color: $color-main;
-  // color: $body-bg;
-  // text-shadow: #000 1px 0px,
-  //   #000 1px 1px,
-  //   #000 0px 1px,
-  //   #000 -1px 1px,
-  //   #000 -1px 0px,
-  //   #000 -1px -1px,
-  //   #000 0px -1px,
-  //   #000 1px -1px,
-  //   #000 0 0 3px,
-  //   #000 0 0 3px,
-  //   #000 0 0 3px,
-  //   #000 0 0 3px,
-  //   #000 0 0 3px,
-  //   #000 0 0 3px,
-  //   #000 0 0 3px,
-  //   #000 0 0 3px;
 }
