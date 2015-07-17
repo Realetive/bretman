@@ -108,6 +108,16 @@ $thumbnail-border-radius:     0;
   }
 }
 
+.navbar-nav > li.active {
+  padding: 10px 15px;
+  line-height: 20px;
+
+  @media (min-width: $screen-sm-min) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
 /* enables CSS3 transition for simple collapses, accordion and also navbar in responsive view */
 .collapse {
   transition: height .3s ease-out;
@@ -139,6 +149,40 @@ $thumbnail-border-radius:     0;
 
 .text-2x {
   font-size: 2em;
+  line-height: 1em;
+}
+
+.text_white {
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    color: darken(#fff, 10%);
+  }
+}
+
+.link_dotted,
+.link_dashed {
+  text-decoration: none;
+  border-bottom-width: 1px;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  } 
+}
+
+.link_dotted {
+  border-bottom-style: dotted;
+}
+
+.link_dashed {
+  border-bottom-style: dashed;
+}
+
+.browserupgrade {
+  padding: 1em;
+  background-color: #f8931f;
 }
 
 .block-intro {
